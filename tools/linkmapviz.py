@@ -1,7 +1,6 @@
 # Link Map Visualizer
 # Regex to match symbol found in file: "(\w)\] ([_a-zA-Z0-9\-.]+) \((\w+),(\w+)\) found in ([_a-zA-Z0-9\-.]+)"
 # Regex to match symbol found as a linker generated symbol: "(\w)\] ([_a-zA-Z0-9\-.]+) found as linker generated symbol"
-from lib2to3.pgen2 import token
 import re
 
 # Assumptions
@@ -28,6 +27,7 @@ def tokens2symbol(tokens):
 
     return {'level': level, 'id': iden, 'ctype': 'linkersymbol'}
 
+# sequential order of link map
 parsed = []
 
 # open file and start iterating
@@ -49,5 +49,13 @@ with open(GALE01) as file:
                     parsed.append(obj)
                 else:
                     pass
+
+# TODO link the parsed sequence together
+def linker(parsed):
+    for obj in parsed:
+        # obj = { level, id, ctype, [scope, objfile]}
+        level = obj['level']
+        id = obj['id']
+        ctype = obj['ctype']
 
 print(len(parsed))
