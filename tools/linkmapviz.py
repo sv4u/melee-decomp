@@ -113,3 +113,5 @@ def linker(parsed):
 
 tree = linker(parsed)
 print(tree)
+
+# TODO make command line utility for this
