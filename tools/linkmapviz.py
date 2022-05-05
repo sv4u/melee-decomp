@@ -2,6 +2,7 @@
 # Regex to match symbol found in file: "(\w)\] ([_a-zA-Z0-9\-.]+) \((\w+),(\w+)\) found in ([_a-zA-Z0-9\-.]+)"
 # Regex to match symbol found as a linker generated symbol: "(\w)\] ([_a-zA-Z0-9\-.]+) found as linker generated symbol"
 import re
+import json
 
 # Assumptions
 # GALE01.map exists within build
@@ -112,6 +113,10 @@ def linker(parsed):
     return tree
 
 tree = linker(parsed)
-print(tree)
+treemap = json.dumps(tree)
+print(treemap)
 
 # TODO make command line utility for this
+# what do we want to search it?
+#   - search by label id
+#   - search by object file
