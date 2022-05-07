@@ -113,10 +113,22 @@ def linker(parsed):
     return tree
 
 tree = linker(parsed)
-treemap = json.dumps(tree)
-print(treemap)
+# treemap = json.dumps(tree) -> for exporting to file
 
-# TODO make command line utility for this
 # what do we want to search it?
 #   - search by label id
 #   - search by object file
+def repl(tree):
+    _quit = False
+    try:
+        while not _quit:
+            _in = input("melee-decomp link map viz >>> ")
+            print('input: ' + _in)
+            # TODO fill this out
+            if _in == 'quit':
+                _quit = True
+        print("\nexiting")
+    except KeyboardInterrupt as e:
+        print("\nexiting")
+
+repl(tree)
